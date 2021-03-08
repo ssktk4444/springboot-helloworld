@@ -15,8 +15,18 @@ jobs:
       with:
         java-version: 1.8
 
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-1
+
     - name: Build with Maven
       run: mvn package
 
     - name: ls
       run: ls -l target/
+
+    - name: s3 ls
+      run: aws s3 ls s3://maven-test-20210227
