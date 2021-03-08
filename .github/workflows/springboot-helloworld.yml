@@ -28,5 +28,8 @@ jobs:
     - name: ls
       run: ls -l target/
 
+    - name: s3 cp
+      run: aws s3 cp target/* s3://maven-test-20210227
+
     - name: s3 ls
       run: aws s3 ls s3://maven-test-20210227
