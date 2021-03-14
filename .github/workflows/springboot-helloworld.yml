@@ -33,3 +33,6 @@ jobs:
 
     - name: s3 ls
       run: aws s3 ls s3://maven-test-20210227
+
+    - name: Run command for deploy
+      run: aws ssm send-command --document-name "deploy-springboot" --targets '[{"Key":"InstanceIds","Values":["i-09acafdf9e3db2139"]}]'
